@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import firebase from "firebase";
 import { AngularFireAuth } from "angularfire2/auth";
-
+import { WelcomePage } from "../welcome/welcome";
 import { AngularFireModule } from 'angularfire2';
 import { GooglePlus } from "@ionic-native/google-plus";
 
@@ -11,7 +11,10 @@ import { GooglePlus } from "@ionic-native/google-plus";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public imagen:String;
+  usuario={
+    photo:'',
+    name:''
+  }
   constructor(public navCtrl: NavController, private fire:AngularFireAuth,public googleplus:GooglePlus) {
 
   }
@@ -28,9 +31,8 @@ export class HomePage {
   }
   loginTwitter(){
     this.fire.auth.signInWithPopup( new firebase.auth.TwitterAuthProvider()).then(res =>{
-      console.log(res);
-    console.log(res.additionalUserInfo.profile.profile_image_url_https);
-    this.imagen=res.additionalUserInfo.profile.profile_image_url_https;
+    this.usuario.photo = res.additionalUserInfo.profile.profile_image_url_https;
+    console.log(this.usuario.photo);
     })
 
   }

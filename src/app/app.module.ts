@@ -13,7 +13,7 @@ import { AngularFireModule } from 'angularfire2';
 import firebase from "firebase";
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { WelcomePage } from "../pages/welcome/welcome";
 /*firebase.initializeApp({
   apiKey: "AIzaSyC7CUs13yPJXnR3LAOdKg7b8iBtGtVvAH0",
   authDomain: "login-24251.firebaseapp.com",
@@ -44,7 +44,8 @@ firebase.initializeApp(firebaseconfig);
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,8 @@ firebase.initializeApp(firebaseconfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    WelcomePage
   ],
   providers: [
     StatusBar,
