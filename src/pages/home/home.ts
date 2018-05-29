@@ -11,7 +11,7 @@ import { GooglePlus } from "@ionic-native/google-plus";
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  public imagen:String;
   constructor(public navCtrl: NavController, private fire:AngularFireAuth,public googleplus:GooglePlus) {
 
   }
@@ -29,6 +29,8 @@ export class HomePage {
   loginTwitter(){
     this.fire.auth.signInWithPopup( new firebase.auth.TwitterAuthProvider()).then(res =>{
       console.log(res);
+    console.log(res.additionalUserInfo.profile.profile_image_url_https);
+    this.imagen=res.additionalUserInfo.profile.profile_image_url_https;
     })
 
   }
