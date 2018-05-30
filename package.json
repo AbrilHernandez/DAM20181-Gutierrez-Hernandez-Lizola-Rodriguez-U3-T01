@@ -57,19 +57,9 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.256664759942-acs1qqgm9co1bqaa59qn883e355r6itq"
       }
-
-      "cordova-plugin-buildinfo": {},
-      "cordova-universal-links-plugin": {},
-      "cordova-plugin-browsertab": {},
-      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "android"
