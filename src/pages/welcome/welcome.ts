@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the WelcomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { QuoteService } from "../../services/quotes";
+
 
 @IonicPage()
 @Component({
@@ -14,7 +10,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'welcome.html',
 })
 export class WelcomePage {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public quotes:QuoteService) {
+    console.log(this.quotes.data);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');

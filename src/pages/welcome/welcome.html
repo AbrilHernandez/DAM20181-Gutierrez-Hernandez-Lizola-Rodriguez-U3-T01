@@ -1,18 +1,21 @@
-<!--
-  Generated template for the WelcomePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Welcome</ion-title>
+    <ion-title>Bienvenido</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+<ion-list>
+  <ion-item>
+    <ion-img src="{{this.quotes.data.photo}}" alt=""></ion-img>
+  </ion-item>
+  <ion-item>
+    <p>{{this.quotes.data.user}}</p>
+  </ion-item>
+</ion-list>
 </ion-content>

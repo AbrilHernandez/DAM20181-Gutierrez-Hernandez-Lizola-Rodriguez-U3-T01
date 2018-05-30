@@ -7,13 +7,29 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button block (click)="loginTwitter()">Login with Twitter</button>
-  <button ion-button block (click)="loginGoogle()"><ion-icon name="logo-googleplus"></ion-icon>Login with Facebook</button>
-<ion-card>
-  <ion-item>
-    <ion-avatar>
-      <img src="{{usuario.photo}}" alt="imagen">
-    </ion-avatar>
-  </ion-item>
-</ion-card>
+  <form [formGroup]="validacion">
+    <ion-item>
+      <ion-label floating>Usuario</ion-label>
+      <ion-input formControlName="user" type="text" [(ngModel)]="user"></ion-input>
+      <ion-item *ngIf= "!validacion.controls.user.valid" style="color: #ea6153;">
+          <p>please enter a valid name</p>
+    </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+     <ion-input formControlName="password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf= "!validacion.controls.password.valid" style="color: #ea6153;">
+        <p>please enter a correct password</p>
+        </ion-item>
+  </form>
+    <div>
+      <button ion-button class="manual" (click)="loginManual()">Ingresar</button>
+      <button ion-button class= "facebook"(click)="loginFacebook()">Facebook</button>
+      </div>
+      <div>
+      <button ion-button class = "twitter"(click)="loginTwitter()">Twitter</button>
+      <button ion-button class = "google"(click)="loginGoogle()">Google+</button>
+    </div>
 </ion-content>
+
