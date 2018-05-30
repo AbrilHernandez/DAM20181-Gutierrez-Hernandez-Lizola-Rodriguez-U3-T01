@@ -2,14 +2,24 @@ import { Component } from '@angular/core';
 import { NavController, ToastController, ToastOptions } from 'ionic-angular';
 import { QuoteService } from "../../services/quotes";
 import firebase from "firebase";
+
+import { AngularFireAuth } from "angularfire2/auth";
 import { WelcomePage } from "../welcome/welcome";
+import { AngularFireModule } from 'angularfire2';
+import { GooglePlus } from "@ionic-native/google-plus";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  usuario={
+    photo:'',
+    name:''
+  }
+  constructor(public navCtrl: NavController, private fire:AngularFireAuth,public googleplus:GooglePlus) {
   public user:string;
   public error:boolean=false;
   public password:string;
@@ -60,9 +70,26 @@ export class HomePage {
       });
     });
   }
+  loginTwitter(){
+    this.fire.auth.signInWithPopup( new firebase.auth.TwitterAuthProvider()).then(res =>{
+    this.usuario.photo = res.additionalUserInfo.profile.profile_image_url_https;
+    console.log(this.usuario.photo);
+    })
 
-  loginTwitter():void{}
-loginGoogle():void{}
+  }
+  loginGoogle(){
+    this.googleplus.login({
+      'webCleint':'256664759942-acs1qqgm9co1bqaa59qn883e355r6itq.apps.googleusercontent.com',
+      'offline':true
+    }).then(res=>{
+      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken)).then(suc =>{
+        alert("LOGIN")
+      }).catch(ns =>{
+        alert("NOT FOUNT")
+      })
+    })
+  }
+
 }
 
 

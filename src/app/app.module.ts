@@ -6,12 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import {QuoteService} from '../services/quotes';
 import {HttpModule} from "@angular/http";
 
+import { GooglePlus } from "@ionic-native/google-plus";
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from "../pages/welcome/welcome";
 
+import { AngularFireModule } from 'angularfire2';
 import firebase from "firebase";
-firebase.initializeApp({
+
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { WelcomePage } from "../pages/welcome/welcome";
+/*firebase.initializeApp({
   apiKey: "AIzaSyC7CUs13yPJXnR3LAOdKg7b8iBtGtVvAH0",
   authDomain: "login-24251.firebaseapp.com",
   databaseURL: "https://login-24251.firebaseio.com",
@@ -20,11 +26,36 @@ firebase.initializeApp({
   messagingSenderId: "751172793821"
 }
 );
-
+*/
+/*var config = {
+  apiKey: "AIzaSyCH8T32YDv6h6AfKkXKZkUTSaF2sJtOuNE",
+  authDomain: "multiplataforma-407cc.firebaseapp.com",
+  databaseURL: "https://multiplataforma-407cc.firebaseio.com",
+  projectId: "multiplataforma-407cc",
+  storageBucket: "multiplataforma-407cc.appspot.com",
+  messagingSenderId: "256664759942"
+};*/
+export const firebaseconfig={
+  apiKey: "AIzaSyCH8T32YDv6h6AfKkXKZkUTSaF2sJtOuNE",
+    authDomain: "multiplataforma-407cc.firebaseapp.com",
+    databaseURL: "https://multiplataforma-407cc.firebaseio.com",
+    projectId: "multiplataforma-407cc",
+    storageBucket: "multiplataforma-407cc.appspot.com",
+    messagingSenderId: "256664759942" 
+};
+firebase.initializeApp(firebaseconfig);
 @NgModule({
   declarations: [
     HomePage,
     MyApp,
+    HomePage,
+    WelcomePage
+  ],
+  imports: [
+    BrowserModule,
+   //AngularFireModule.initializeApp(config),
+   AngularFireAuthModule,
+   AngularFireModule.initializeApp(firebaseconfig),
     WelcomePage
     
   ],
@@ -42,6 +73,7 @@ firebase.initializeApp({
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     QuoteService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
