@@ -5,9 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import {QuoteService} from '../services/quotes';
 import {HttpModule} from "@angular/http";
-
+import { Facebook } from "@ionic-native/facebook";
 import { GooglePlus } from "@ionic-native/google-plus";
-
+import { TwitterConnect } from "@ionic-native/twitter-connect";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from "../pages/welcome/welcome";
@@ -68,7 +68,10 @@ firebase.initializeApp(firebaseconfig);
     SplashScreen,
     GooglePlus,
     QuoteService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Facebook,
+    TwitterConnect
+
   ]
 })
 export class AppModule {}
