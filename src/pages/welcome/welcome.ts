@@ -8,7 +8,7 @@ import { GooglePlus } from "@ionic-native/google-plus";
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html',
-})
+}) 
 export class WelcomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public quotes:QuoteService,public googlePlus:GooglePlus) {
