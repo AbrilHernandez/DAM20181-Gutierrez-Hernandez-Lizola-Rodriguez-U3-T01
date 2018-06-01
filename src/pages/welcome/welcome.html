@@ -12,10 +12,18 @@
 <ion-content padding>
 <ion-list>
   <ion-item>
-    <ion-img src="{{this.quotes.data.photo}}" alt=""></ion-img>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{quotes.data.photo}}">
+      </ion-avatar>
+      <h2>{{quotes.data.name}}</h2>
+    </ion-item>
+    <ion-item>
+      <div>
+        <button ion-button class="logout" (click)="logout()" >LogOut</button>
+      </div>
+    </ion-item>
   </ion-item>
-  <ion-item>
-    <p>{{this.quotes.data.user}}</p>
-  </ion-item>
+ 
 </ion-list>
 </ion-content>

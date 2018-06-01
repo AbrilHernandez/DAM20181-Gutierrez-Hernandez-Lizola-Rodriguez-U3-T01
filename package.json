@@ -67,6 +67,8 @@
       "cordova-plugin-browsertab": {},
       "cordova-plugin-inappbrowser": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }

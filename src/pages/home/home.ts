@@ -28,7 +28,7 @@ export class HomePage {
     toastOptions: ToastOptions; 
   
     constructor(private toast: ToastController, public navCtrl: NavController, public quotes:QuoteService, public formBuilder: FormBuilder,
-    private fire:AngularFireAuth, public googleplus:GooglePlus) {
+    private fire:AngularFireAuth, public googlePlus:GooglePlus) {
       this.quotes.getUsers();
       this.validacion = formBuilder.group({
         user: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z]*'),Validators.required])],
@@ -79,18 +79,25 @@ loginManual():void{
     })
 
   }
-
+ 
   loginGoogle(){
-    this.googleplus.login({
-      'webCleint':'256664759942-acs1qqgm9co1bqaa59qn883e355r6itq.apps.googleusercontent.com',
-      'offline':true
-    }).then(res=>{
-      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken)).then(suc =>{
-        alert("LOGIN");
-        console.log(res);
-      }).catch(ns =>{
-        alert("NOT FOUNT")
-      })
-    })
+    this.googlePlus.login({})
+  .then(res => {
+    //console.log(res);
+      
+    this.quotes.data={
+      photo : res.imageUrl,
+      name : res.givenName
+    }
+    this.navCtrl.push(WelcomePage);
+  }
+)
+  .catch(err => console.error(err));
+
+  }
+  logout(){
+    this.googlePlus.disconnect()
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
   }
 }

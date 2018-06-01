@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { QuoteService } from "../../services/quotes";
-
+import { GooglePlus } from "@ionic-native/google-plus";
 
 @IonicPage()
 @Component({
@@ -11,11 +11,16 @@ import { QuoteService } from "../../services/quotes";
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public quotes:QuoteService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public quotes:QuoteService,public googlePlus:GooglePlus) {
     console.log(this.quotes.data);
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WelcomePage');
+   
+  }
+  logout(){
+    this.googlePlus.disconnect()
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
   }
 
 }
