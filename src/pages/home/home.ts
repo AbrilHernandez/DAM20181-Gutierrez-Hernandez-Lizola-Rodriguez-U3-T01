@@ -73,7 +73,12 @@ loginManual():void{
   }
   loginTwitter(){
     this.fire.auth.signInWithPopup( new firebase.auth.TwitterAuthProvider()).then(res =>{
-    this.usuario.photo = res.additionalUserInfo.profile.profile_image_url_https;
+    
+    this.quotes.data={
+      photo : res.additionalUserInfo.profile.profile_image_url_https,
+      name :res.additionalUserInfo.username
+    }
+    this.navCtrl.push(WelcomePage);
     console.log(res);
     console.log(this.usuario.photo);
     })
